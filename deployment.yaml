@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend-app
-        image: gcr.io/crack-adapter-372504/frontend:test-26
+        image: gcr.io/crack-adapter-372504/frontend:test-27
         ports:
         - containerPort: 3000
 ---
