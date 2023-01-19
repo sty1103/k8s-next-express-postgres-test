@@ -25,8 +25,8 @@ app.get('/api', (req, res) => {
 //////////////// 파일 업로드 //////////////////////
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const path = `/var/www/uploads`;
-    // const path = './test'
+    // const path = `/var/www/uploads`;
+    const path = '/var/www/uploads'
     cb(null, path)
     
     // 디렉터리 없으면 디렉터리를 새로 생성
@@ -39,10 +39,16 @@ const storage = multer.diskStorage({
 })
 
 app.post('/api/upload', (req, res) => {
-  const upload = multer({storage}).single('img');
+    const upload = multer({storage}).single('img');
 
-  upload(req, res, function (err) {
-    res.status(500).json({message: err.message});
+    upload(req, res, function (err) {
+      if (err instanceof multer.MulterError) {
+        res.status(500).json({msg: err.message});
+      } else if (err) {
+        res.status(501).json({msg: err.message});
+      } else {
+        res.status(200).json({upload:'success'});
+      }
   })
 })
 
