@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   gcePersistentDisk:
-    pdName: test-disk
+    pdName: disk
 ---
 apiVersion: v1
 kind : PersistentVolumeClaim
