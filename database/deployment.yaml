@@ -7,7 +7,7 @@ spec:
   capacity:
     storage: 10G
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   gcePersistentDisk:
     pdName: postgres-disk
 ---
