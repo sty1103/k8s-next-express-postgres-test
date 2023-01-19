@@ -55,12 +55,15 @@ const client = new Client({
   port: 5432
 });
 
-client.connect()
-
 app.post('/api/db', (req, res) => {
+  client.connect()
+
   client.query(`INSERT INTO customer(password) VALUES('1234')`).then((res) => {
-    console.log( res );
     client.end()
+    res.send(req)
+  })
+  .catch(err => {
+    res.send(err);
   })
 })
 
