@@ -11,13 +11,13 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: frontend-prod-svc
+            name: frontend-svc
             port:
               number: 80
       - path: /api
         pathType: Prefix
         backend:
           service:
-            name: backend-prod-svc
+            name: backend-svc
             port:
               number: 80
