@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 10G
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: disk
+---
+apiVersion: v1
+kind : PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+spec:
+  storageClassName: ""
+  volumeName: postgres-pv
+  accessModes:
+    - ReadWriteOnce
+  # DB가 요청할 볼륨의 리소스
+  resources:
+    requests:
+      storage: 10G
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-secret
+stringData:
+  POSTGRES_DB: prod
+  POSTGRES_USER: test
+  POSTGRES_PASSWORD: test
+  PGDATA: /var/lib/postgresql/data/pgdata/prod
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-postgres
+  template:
+    metadata:
+      labels:
+        app: db-postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:13.3
+        imagePullPolicy: "IfNotPresent"
+        ports:
+        - containerPort: 5432
+        envFrom:
+          - secretRef:
+              name: postgres-secret
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data/prod
+          name: postgres-storage
+      volumes:
+      - name: postgres-storage
+        persistentVolumeClaim:
+          claimName: postgres-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+  selector:
+   app: db-postgres

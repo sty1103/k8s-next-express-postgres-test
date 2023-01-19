@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: backend-pv
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 50G
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: test-disk
+---
+apiVersion: v1
+kind : PersistentVolumeClaim
+metadata:
+  name: backend-pv
+spec:
+  storageClassName: ""
+  volumeName: backend-pv
+  accessModes:
+    - ReadWriteOnce
+  # 백엔드가 요청할 볼륨의 리소스
+  resources:
+    requests:
+      storage: 50G
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  selector:
+    # Deployment 오브젝트가 파드를 관리할 때 사용하는 매핑 정보
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      # 생설될 파드의 라벨 정보
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend-app
+        image: gcr.io/YOUR/PATH:backend
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+          - name: backend-uploads-path
+            mountPath: /uploads
+      volumes:
+      - name: backend-storage
+        persistentVolumeClaim:
+          claimName: backend-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc
+spec:
+  selector:
+    app: backend
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080

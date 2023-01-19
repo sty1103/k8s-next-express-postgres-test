@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    # Deployment 오브젝트가 파드를 관리할 때 사용하는 매핑 정보
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      # 생설될 파드의 라벨 정보
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend-app
+        image: gcr.io/crack-adapter-372504/gke-cicd-test-prod:frontend3
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+spec:
+  # 서비스를 연결할 포드 라벨 정보
+  selector:
+    app: frontend
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 3000
