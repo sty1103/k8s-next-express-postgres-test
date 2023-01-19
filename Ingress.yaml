@@ -14,7 +14,7 @@ spec:
             name: frontend-svc
             port:
               number: 80
-      - path: /api/upload
+      - path: /api
         pathType: Prefix
         backend:
           service:
