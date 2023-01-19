@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-test
+spec:
+  ingressClassName: nginx # nginx ingress controller와 연결에 필요
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: frontend-prod-svc
+            port:
+              number: 80
+      - path: /api/blue
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-prod-svc
+            port:
+              number: 80
