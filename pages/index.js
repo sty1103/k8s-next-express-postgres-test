@@ -29,7 +29,7 @@ export default function Home() {
       formData.append('img', img);
       formData.append('hello', 'world');
       
-      const res = await axios.post('http://localhost:8080/api/upload',
+      const res = await axios.post('http://34.84.137.159/api/upload',
       formData,
       { 'Content-Type': 'multipart/form-data'
       }).then(res => {
@@ -39,7 +39,7 @@ export default function Home() {
   }
 
   async function onClickRequest() {
-    const res = await axios.post('http://localhost:8080/api/db');
+    const res = await axios.post('http://34.84.137.159/api/db');
     console.log( res );
   }
 
