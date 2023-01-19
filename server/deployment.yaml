@@ -19,7 +19,7 @@ spec:
   storageClassName: ""
   volumeName: backend-pv
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   # 백엔드가 요청할 볼륨의 리소스
   resources:
     requests:

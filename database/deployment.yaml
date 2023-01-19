@@ -19,7 +19,7 @@ spec:
   storageClassName: ""
   volumeName: postgres-pv
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   # DB가 요청할 볼륨의 리소스
   resources:
     requests:
