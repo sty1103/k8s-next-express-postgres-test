@@ -45,7 +45,7 @@ spec:
         image: gcr.io/crack-adapter-372504/backend:test-7
         ports:
         - containerPort: 8080
-        # command: ["/bin/sh", "-ec", "while :; do echo '.'; sleep 5 ; done"] # BackOff 에러 해결
+        command: ["/bin/sh", "-ec", "while :; do echo '.'; sleep 5 ; done"] # BackOff 에러 해결
         volumeMounts:
           - name: backend-uploads
             mountPath: /uploads
