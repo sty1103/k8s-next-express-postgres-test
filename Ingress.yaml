@@ -14,7 +14,7 @@ spec:
             name: frontend-prod-svc
             port:
               number: 80
-      - path: /api/blue
+      - path: /api
         pathType: Prefix
         backend:
           service:
