@@ -18,7 +18,7 @@ const port = 8080
 // }
 // app.use(cors(corsOptions));
 
-app.post('/api', (req, res) => {
+app.get('/api', (req, res) => {
   res.status(200).send({hello:'world'});
 });
 
