@@ -46,26 +46,26 @@ app.post('/api/upload', upload.single('img'), (req, res) => {
 })
 
 //////////////// 디비 테스트 //////////////////////
-const { Client } = require('pg')
-const client = new Client({
-  user: "test",
-  host: "34.84.137.159",
-  database: "prod",
-  password: "test",
-  port: 5432
-});
+// const { Client } = require('pg')
+// const client = new Client({
+//   user: "test",
+//   host: "34.84.137.159",
+//   database: "prod",
+//   password: "test",
+//   port: 5432
+// });
 
-app.post('/api/db', (req, res) => {
-  client.connect()
+// app.post('/api/db', (req, res) => {
+//   client.connect()
 
-  client.query(`INSERT INTO customer(password) VALUES('1234')`).then((res) => {
-    client.end()
-    res.send(req)
-  })
-  .catch(err => {
-    res.send(err);
-  })
-})
+//   client.query(`INSERT INTO customer(password) VALUES('1234')`).then((res) => {
+//     client.end()
+//     res.send(req)
+//   })
+//   .catch(err => {
+//     res.send(err);
+//   })
+// })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
