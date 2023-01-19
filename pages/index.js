@@ -29,8 +29,9 @@ export default function Home() {
       formData.append('img', img);
       formData.append('hello', 'world');
       
-      const res = await axios.post('/api/upload',
       // const res = await axios.post('http://localhost:8080/api/upload',
+      console.log( 'sended...')
+      const res = await axios.post('/api/upload',
       formData, { 'Content-Type': 'multipart/form-data'
       }).then(res => {
         console.log( res );
