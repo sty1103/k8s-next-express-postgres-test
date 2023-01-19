@@ -42,7 +42,7 @@ spec:
     spec:
       containers:
       - name: backend-app
-        image: gcr.io/crack-adapter-372504/backend:test-27
+        image: gcr.io/crack-adapter-372504/backend:test-28
         ports:
         - containerPort: 8080
         volumeMounts:
