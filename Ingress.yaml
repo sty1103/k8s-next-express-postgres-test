@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-test
+  annotations:
+    nginx.ingress.kubernetes.io/proxy_body_size: 1024M
 spec:
   ingressClassName: nginx # nginx ingress controller와 연결에 필요
   rules:

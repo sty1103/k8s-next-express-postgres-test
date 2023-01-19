@@ -30,9 +30,8 @@ export default function Home() {
       formData.append('hello', 'world');
       
       // const res = await axios.post('http://localhost:8080/api/upload',
-      console.log( 'sended...')
       const res = await axios.post('/api/upload',
-      formData, { 'Content-Type': 'multipart/form-data'
+      formData, { 'Content-Type': 'multipart/form-data; charset=UTF-8;'
       }).then(res => {
         console.log( res );
       }).catch(err => {
