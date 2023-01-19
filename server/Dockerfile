@@ -5,4 +5,4 @@ COPY ./ /usr/app
  
 RUN npm install
  
-CMD ["node", "index.js"]
+CMD ["nodemon"]
