@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   gcePersistentDisk:
-    pdName: disk
+    pdName: disk-test
 ---
 apiVersion: v1
 kind : PersistentVolumeClaim
@@ -42,7 +42,7 @@ spec:
     spec:
       containers:
       - name: backend-app
-        image: gcr.io/crack-adapter-372504/backend:test-5
+        image: gcr.io/crack-adapter-372504/backend:test-6
         ports:
         - containerPort: 8080
         volumeMounts:
