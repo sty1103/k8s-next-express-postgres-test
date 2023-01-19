@@ -46,10 +46,10 @@ spec:
         ports:
         - containerPort: 8080
         volumeMounts:
-          - name: backend-storage
+          - name: backend-uploads
             mountPath: /uploads
       volumes:
-      - name: backend-storage
+      - name: backend-uploads
         persistentVolumeClaim:
           claimName: backend-pvc
 ---
