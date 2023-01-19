@@ -48,10 +48,6 @@ spec:
         volumeMounts:
           - name: backend-uploads
             mountPath: /var/www/uploads
-        # lifecycle:
-        #   postStart:
-        #     exec:
-        #       command: ["/bin/sh", "-c", "chown node:node /var/www/uploads"]
       volumes:
       - name: backend-uploads
         persistentVolumeClaim:
