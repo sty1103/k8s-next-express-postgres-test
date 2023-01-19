@@ -39,7 +39,7 @@ spec:
       containers:
       - name: postgres
         image: postgres:13.3
-        imagePullPolicy: "IfNotPresent"
+        # imagePullPolicy: "IfNotPresent"
         ports:
         - containerPort: 5432
         envFrom:
