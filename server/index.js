@@ -25,7 +25,7 @@ app.post('/api', (req, res) => {
 //////////////// 파일 업로드 //////////////////////
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const path = '/';
+    const path = '/uploads';
     cb(null, path)
 
     // 디렉터리 없으면 디렉터리를 새로 생성
