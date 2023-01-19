@@ -50,7 +50,7 @@ app.post('/api/upload', upload.single('img'), (req, res) => {
 const { Client } = require('pg')
 const client = new Client({
   user: "test",
-  host: "http://35.243.73.50",
+  host: "35.243.125.162",
   database: "prod",
   password: "test",
   port: 5432

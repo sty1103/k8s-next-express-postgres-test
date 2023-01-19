@@ -52,7 +52,7 @@ spec:
       containers:
       - name: postgres
         image: postgres:13.3
-        # imagePullPolicy: "IfNotPresent"
+        imagePullPolicy: "IfNotPresent"
         ports:
         - containerPort: 5432
         envFrom:
@@ -71,8 +71,12 @@ kind: Service
 metadata:
   name: postgres-svc
 spec:
-  type: NodePort
-  ports:
-    - port: 5432
   selector:
-   app: db-postgres
+    app: db-postgres
+  ports:
+  - name: http
+    port: 5432
+    protocol: TCP
+    targetPort: 5432
+  type: LoadBalancer
+  loadBalancerIP: "35.243.125.162"
