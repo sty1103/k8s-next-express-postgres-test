@@ -14,7 +14,7 @@ spec:
 apiVersion: v1
 kind : PersistentVolumeClaim
 metadata:
-  name: backend-pv
+  name: backend-pvc
 spec:
   storageClassName: ""
   volumeName: backend-pv
