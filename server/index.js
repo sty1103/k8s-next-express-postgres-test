@@ -45,7 +45,7 @@ app.post('/api/upload', (req, res) => {
       if (err instanceof multer.MulterError) {
         res.status(200).json({hello:'world'});    
       } else {
-        res.status(500).send({data: err});
+        res.status(500).send({message: err.message});
       }
   })
 })
