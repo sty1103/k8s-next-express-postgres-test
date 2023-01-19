@@ -23,17 +23,19 @@ export default function Home() {
 
   async function onClickUpload() {
     const img = imgRef.current?.files[0];
-    console.log( img );
+
     if ( img ) {
       const formData = new FormData();
       formData.append('img', img);
       formData.append('hello', 'world');
       
       const res = await axios.post('http://34.84.137.159/api/upload',
-      formData,
-      { 'Content-Type': 'multipart/form-data'
+      // const res = await axios.post('http://localhost:8080/api/upload',
+      formData, { 'Content-Type': 'multipart/form-data'
       }).then(res => {
         console.log( res );
+      }).catch(err => {
+        console.log( err );
       });
     }
   }
