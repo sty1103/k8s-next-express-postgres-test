@@ -18,9 +18,9 @@ const port = 8080
 // }
 // app.use(cors(corsOptions));
 
-// app.get('/api', (req, res) => {
-//   res.status(200).send({hello:'world'});
-// });
+app.get('/api', (req, res) => {
+  res.status(200).send({hello:'world'});
+});
 
 //////////////// 파일 업로드 //////////////////////
 const storage = multer.diskStorage({
