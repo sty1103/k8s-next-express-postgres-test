@@ -1,23 +1,10 @@
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: backend-pv
-spec:
-  storageClassName: ""
-  capacity:
-    storage: 50G
-  accessModes:
-    - ReadWriteOnce
-  gcePersistentDisk:
-    pdName: disk-test
----
-apiVersion: v1
 kind : PersistentVolumeClaim
 metadata:
   name: backend-pvc
 spec:
   storageClassName: ""
-  volumeName: backend-pv
+  volumeName: test-pv
   accessModes:
     - ReadWriteOnce
   # 백엔드가 요청할 볼륨의 리소스
