@@ -42,7 +42,7 @@ spec:
     spec:
       containers:
       - name: backend-app
-        image: gcr.io/YOUR/PATH:backend
+        image: gcr.io/backend:test-1
         ports:
         - containerPort: 8080
         volumeMounts:
