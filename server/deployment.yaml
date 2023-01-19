@@ -6,7 +6,7 @@ spec:
   storageClassName: ""
   volumeName: test-pv
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   # 백엔드가 요청할 볼륨의 리소스
   resources:
     requests:
