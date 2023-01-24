@@ -38,8 +38,8 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage })
 
-app.post('/api/upload', upload.single('img'), (req, res) => {
-  res.status(200);
+app.post('/api/upload', (req, res) => {
+  res.status(200).send({upload:'complete'});
 });
 
 // app.post('/api/upload', (req, res) => {
