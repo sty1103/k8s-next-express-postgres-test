@@ -8,8 +8,8 @@ metadata:
     nginx.ingress.kubernetes.io/proxy_body_size: 500M
 spec:
   rules:
-    http:
-      paths:
+  - http:
+    paths:
       - path: /*
         pathType: ImplementationSpecific
         backend:
