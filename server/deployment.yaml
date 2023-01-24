@@ -49,12 +49,12 @@ spec:
           httpGet:
             path: /api
             port: 8080
-            initialDelaySeconds: 5
+          initialDelaySeconds: 5
         livenessProbe:
           httpGet:
             path: /api
             port: 8080
-            initialDelaySeconds: 5
+          initialDelaySeconds: 5
         volumeMounts:
           - name: backend-uploads
             mountPath: /var/www/uploads
