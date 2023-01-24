@@ -19,7 +19,7 @@ const port = 8080
 // app.use(cors(corsOptions));
 
 app.get('/api', (req, res) => {
-  res.status(200).send({hello:'world'});
+  res.status(200).send({hello:'world32'});
 });
 
 //////////////// 파일 업로드 //////////////////////
@@ -38,8 +38,12 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage })
 
+app.get('/api/upload', (req, res) => {
+  res.status(200).send({upload:'complete1'});
+});
+
 app.post('/api/upload', (req, res) => {
-  res.status(200).send({upload:'complete'});
+  res.status(200).send({upload:'complete2'});
 });
 
 // app.post('/api/upload', (req, res) => {
