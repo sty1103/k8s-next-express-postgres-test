@@ -7,7 +7,7 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: test-service-ip
     nginx.ingress.kubernetes.io/proxy_body_size: 500M
 spec:
-  ingressClassName: example
+  # ingressClassName: example
   rules:
   - http:
       paths:
