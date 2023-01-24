@@ -1,23 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-test
+  name: test-ingerss
   annotations:
-    nginx.ingress.kubernetes.io/proxy_body_size: 1024M
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.global-static-ip-name: test-service-ip
+    nginx.ingress.kubernetes.io/proxy_body_size: 500M
 spec:
-  ingressClassName: nginx # nginx ingress controller와 연결에 필요
   rules:
-  - http:
+    http:
       paths:
-      - path: /
+      - path: /*
         pathType: ImplementationSpecific
         backend:
           service:
-            name: frontend-svc
+            name: frontweb-svc
             port:
               number: 80
       - path: /api
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: backend-svc
