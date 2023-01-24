@@ -49,6 +49,10 @@ spec:
           httpGet:
             path: /api
             port: 8080
+        livenessProbe:
+          httpGet:
+            path: /api
+            port: 8080
         volumeMounts:
           - name: backend-uploads
             mountPath: /var/www/uploads
