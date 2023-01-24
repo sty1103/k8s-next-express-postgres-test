@@ -47,8 +47,8 @@ spec:
         - containerPort: 8080
         readinessProbe:
           httpGet:
-          path: /api
-          port: 8080
+            path: /api
+            port: 8080
         volumeMounts:
           - name: backend-uploads
             mountPath: /var/www/uploads
