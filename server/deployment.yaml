@@ -64,19 +64,9 @@ spec:
   selector:
     app: backend
   type: NodePort
+  externalTrafficPolicy: Local
   ports:
     - name: http
       port: 80
       protocol: TCP
       targetPort: 8080
----
-apiVersion: cloud.google.com/v1
-kind: BackendConfig
-metadata:
-  name: backend-config
-spec:
-  healthCheck:
-    checkIntervalSec: 60
-    port: 80
-    type: HTTP
-    requestPath: /api
