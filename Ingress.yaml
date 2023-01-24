@@ -7,14 +7,15 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: test-service-ip
     nginx.ingress.kubernetes.io/proxy_body_size: 500M
 spec:
+  ingressClassName: example
   rules:
   - http:
-    paths:
+      paths:
       - path: /*
         pathType: ImplementationSpecific
         backend:
           service:
-            name: frontweb-svc
+            name: frontend-svc
             port:
               number: 80
       - path: /api
